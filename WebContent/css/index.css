@@ -1,8 +1,11 @@
 select{-webkit-appearance: none;}
+select:hover{-webkit-appearance: menulist-button;}
 label, .gender{
 	margin-top: 7px;
 }
-
+tr th{
+  font-size: 18px;
+}
 tr td{
   padding-top: 10px ! important;
 }

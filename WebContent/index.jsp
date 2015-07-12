@@ -4,7 +4,6 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-
   <meta name="author" content="Chhorn Elit">
   <meta lang="en">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -43,7 +42,7 @@
               <div class="form-group">
                   <label class="col-sm-3">ID:</label>
                   <div class="col-sm-9">
-                      <input type="text" class="form-control" name="id" placeholder="Enter ID"> </div>
+                      <input type="number" class="form-control" name="id" placeholder="Enter ID" disabled style="  cursor:alias;"> </div>
               </div>              
               <div class="form-group">
                   <label class="col-sm-3">Name:</label>
@@ -55,7 +54,7 @@
                 <div class="col-sm-9 gender">
                   <span class="col-sm-2"></span>
                   <span class="col-sm-4">
-                    <input type="radio" name="gender" value="male" data-fv-field="gender"> Male
+                    <input type="radio" name="gender" value="male" data-fv-field="gender" checked> Male
                   </span>
                   <span class="col-sm-5">
                     <input type="radio" name="gender" value="female" data-fv-field="gender"> Female

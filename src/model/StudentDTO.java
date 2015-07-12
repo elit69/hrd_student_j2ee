@@ -3,10 +3,10 @@ package model;
 public class StudentDTO {
 	private int id;
 	private String name;
-	private boolean gender;
+	private int gender;
 	private String university;
 	private String stu_class;
-	private boolean status;
+	private int status;
 	
 	public int getId() {
 		return id;
@@ -20,10 +20,10 @@ public class StudentDTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public boolean getGender() {
+	public int getGender() {
 		return gender;
 	}
-	public void setGender(boolean gender) {
+	public void setGender(int gender) {
 		this.gender = gender;
 	}
 	public String getUniversity() {
@@ -38,10 +38,10 @@ public class StudentDTO {
 	public void setStu_class(String stu_class) {
 		this.stu_class = stu_class;
 	}
-	public boolean isStatus() {
+	public int getStatus() {
 		return status;
 	}
-	public void setStatus(boolean status) {
+	public void setStatus(int status) {
 		this.status = status;
 	}
 }
