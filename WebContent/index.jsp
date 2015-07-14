@@ -108,7 +108,7 @@
             <div class="col-sm-8">
               <div class="form-group">                    
                 <div class="input-group">
-                <input id="searchArticle" type="textbox" placeholder="Enter Name " class="form-control input-lg">
+                <input id="inputSearchName" type="textbox" placeholder="Enter Name " class="form-control input-lg">
                 <span class="input-group-btn">
                   <button class="btn btn-primary btn-lg" type="button" id="addressSearch" style="width:100px;">Search</button>
                 </span>
@@ -120,7 +120,7 @@
             <!-- Search Type Select -->
             <div class="col-sm-2">
               <div class="form-group" >
-                <select name="Type" class="selectpicker" id="selectSearchType" >
+                <select name="Type" class="selectpicker" id="selectSearchTypeClass" >
                   <option class="active">All Class</option>
                   <option>PP</option>
                   <option>BTB</option>
@@ -131,7 +131,7 @@
             <!-- End Search Type Select -->       
             <div class="col-sm-2">
               <div class="form-group" >
-                <select name="Type" class="selectpicker" id="selectSearchType" >
+                <select name="Type" class="selectpicker" id="selectSearchTypeStatus" >
                   <option class="active">All Status</option>
                   <option>Active</option>
                   <option>Inactive</option>
