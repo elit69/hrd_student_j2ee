@@ -1,11 +1,11 @@
 $(document).ready(function() {
-  $('.selectpicker').selectpicker({ 
-    'selectedText': '',
-    style:'btn-default btn-lg',
-    width:'auto'
-  });
+//  $('.selectpicker').selectpicker({ 
+//    'selectedText': '',
+//    style:'btn-default btn-lg',
+//    width:'auto'
+//  });
   $('#addressSearch').click(function(){
-		$.post("listarticles.act", {
+		$.post("searchstudents.act", {
 	        stu_name: searchObject.name(),
 	        stu_class: searchObject.class(),
 	        stu_status: searchObject.status()
@@ -16,6 +16,9 @@ $(document).ready(function() {
 	  		alert("Data: " + data + "\nStatus: " + status);
 	  	}
 	  );  	
+    // insertstudent.act
+    // updatestudent.act
+    // deletestudent.act
 	});
 	var searchObject = {
     name: function(){	return $("#inputSearchName").val();},

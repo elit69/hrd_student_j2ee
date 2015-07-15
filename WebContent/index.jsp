@@ -11,7 +11,6 @@
   <!-- CSS Library -->
   <link rel="stylesheet" href="css/lib/bootstrap.min.css" />
   <link rel="stylesheet" href="css/lib/font-awesome-4.3.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="css/lib/bootstrap-select.min.css">
   <!-- End CSS Library -->
 
   <!-- Custom StyleSheet --> 
@@ -21,13 +20,10 @@
   <!-- Javascript Library -->
   <script src="js/lib/jquery-2.1.4.min.js"></script>    
   <script src="js/lib/bootstrap.min.js"></script>
-  <script src="js/lib/bootstrapValidator.min.js"></script>
-  <script src="js/lib/bootstrap-select.min.js"></script>
   <!-- End Javascript Library -->
   
   <!-- Custom Javascript --> 
   <script src="js/index.js"></script>
-  <!-- <script src="js/bootstrap-validate-user.js"></script> -->
   <!-- End Custom Javascript -->
 </head>
 <body>

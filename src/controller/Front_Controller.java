@@ -8,7 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//import controller.Article.ListArticle;
+import controller.student.DeleteStudent;
+import controller.student.InsertStudent;
+import controller.student.SearchStudents;
+import controller.student.UpdateStudent;
+
 
 
 
@@ -43,15 +47,39 @@ public class Front_Controller extends HttpServlet {
 		switch(command){
 		
 
-			case "/listarticles.act":
-		//		action = new ListArticle(); 
-				System.out.println(request.getParameter("stu_name"));
+			case "/searchstudents.act":
+				action = new SearchStudents(); 
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 				break;
+			case "/insertstudent.act":
+				action = new InsertStudent(); 
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case "/updatestudent.act":
+				action = new UpdateStudent(); 
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case "/deletestudent.act":
+				action = new DeleteStudent(); 
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+				
 
 			default :
 				forward = new ActionForward();

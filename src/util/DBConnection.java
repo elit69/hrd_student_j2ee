@@ -26,7 +26,7 @@ public class DBConnection {
 		Class.forName(DRIVER_NAME);
 		Connection con = DriverManager.getConnection(URL + PORT_NUMBER + "/"
 				+ DB_NAME, USER_NAME, PASSWORD);
-		System.out.println("Connecting to database...");
+		System.out.println("\nConnecting to database...");
 		return con;
 	}
 	public static void main(String[] args) {
