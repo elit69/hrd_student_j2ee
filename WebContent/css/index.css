@@ -36,4 +36,6 @@ hr{
 .input-group{
   margin-bottom: 30px;
 }
-
+#showErrorSearch, #showErrorAdd, #showSuccessAdd{
+  display: none;
+}

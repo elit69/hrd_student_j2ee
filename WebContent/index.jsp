@@ -11,6 +11,7 @@
   <!-- CSS Library -->
   <link rel="stylesheet" href="css/lib/bootstrap.min.css" />
   <link rel="stylesheet" href="css/lib/font-awesome-4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="css/lib/bootstrap-select.min.css">
   <!-- End CSS Library -->
 
   <!-- Custom StyleSheet --> 
@@ -20,6 +21,7 @@
   <!-- Javascript Library -->
   <script src="js/lib/jquery-2.1.4.min.js"></script>    
   <script src="js/lib/bootstrap.min.js"></script>
+  <script src="js/lib/bootstrap-select.min.js"></script>  
   <!-- End Javascript Library -->
   
   <!-- Custom Javascript --> 
@@ -31,20 +33,30 @@
     <div class="row col-sm-11 center-block">
       <div class="col-sm-12 card form-horizontal"> 
         
-          <h1>Add New</h1>
-          <hr> 
+          <div id="showErrorAdd" class='alert alert-danger' style='padding:20px!important'> 
+            <center> 
+              <strong>Insert Error!</strong> Please Input All Fields! 
+            </center> 
+          </div>
+          <div id="showSuccessAdd" class='alert alert-success' style='padding:20px!important'> 
+            <center> 
+              <strong>Insert Successfully!</strong> 
+            </center> 
+          </div>           
+  		    <h1>Add New</h1>
+         	<hr> 
           <div class="col-sm-12 input-group">
             <div class="col-sm-5">
               <div class="form-group">
                   <label class="col-sm-3">ID:</label>
                   <div class="col-sm-9">
-                      <input type="number" id="inputId" class="form-control" name="id" placeholder="Enter ID" disabled style="cursor:alias;">
+                      <input type="text" id="inputId" class="form-control" name="id" placeholder="Enter ID" disabled style="cursor:alias;">
                   </div>
               </div>              
               <div class="form-group">
                   <label class="col-sm-3">Name:</label>
                   <div class="col-sm-9">
-                      <input type="text" id="inputName" class="form-control" name="name" placeholder="Enter Name"> </div>
+                      <input type="text" id="inputName" class="form-control" name="name" placeholder="Enter Name" maxlength="100"> </div>
               </div>
               <div class="form-group ">
                 <label class="col-sm-3">Gender:</label>
@@ -64,12 +76,12 @@
               <div class="form-group">
                   <label class="col-sm-3">University: </label>
                   <div class="col-sm-9">
-                      <input type="text" id="inputUniversity" name="city" class="form-control" placeholder="Enter University"> </div>
+                      <input type="text" id="inputUniversity" name="city" class="form-control" placeholder="Enter University" maxlength="50"> </div>
               </div>
               <div class="form-group">
                   <label class="col-sm-3">Class: </label>
                   <div class="col-sm-9">
-                      <input type="text" id="inputClass" name="city" class="form-control" placeholder="Enter Class"> </div>
+                      <input type="text" id="inputClass" name="city" class="form-control" placeholder="Enter Class" maxlength="5"> </div>
               </div>
               <div class="form-group ">
                 <label class="col-sm-3">Status:</label>
@@ -145,9 +157,8 @@
                 </tr>
               </thead>
               <tbody>
-                                                 
-              </tbody>      
-
+                                                                  
+              </tbody>   
             </table> 
           </div>
           <!-- End Table User List -->    

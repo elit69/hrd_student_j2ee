@@ -1,48 +1,81 @@
 $(document).ready(function() {
-//  $('.selectpicker').selectpicker({ 
-//    'selectedText': '',
-//    style:'btn-default btn-lg',
-//    width:'auto'
-//  });
+    // updatestudent.act
+    // deletestudent.act
+    $('.selectpicker').selectpicker({ 
+        'selectedText': '',
+        style:'btn-default btn-lg',
+        width:'auto'
+    });
+    $('#btnClear').click(function(){
+        studentObject.clearForm();
+        $("#showSuccessAdd").hide(400);
+        $("#showErrorAdd").hide(400);
+    });
     $('#btnAdd').click(function(){
         if( studentObject.id() ==  "" || 
             studentObject.name() ==  "" ||
             studentObject.university() ==  "" ||
             studentObject.stu_class() ==  ""){
-            alert("false a alsdf");
+            $("#showErrorAdd").show(400);
+            $("#showSuccessAdd").hide(400);
             return;
+        } else{
+            $.ajax({
+                url: "insertstudent.act", 
+                method : "POST",
+                data : {
+                    stu_id:         studentObject.id(),
+                    stu_gender:     studentObject.gender(),
+                    stu_status:     studentObject.status(),
+                    stu_name:       studentObject.name(),
+                    stu_university: studentObject.university(),
+                    stu_class:      studentObject.stu_class()
+                },
+                success: function(){
+                    $("#showErrorAdd").hide(400);
+                    $("#showSuccessAdd").show(400);
+                    setIncreaseId(studentObject.id()); 
+                    studentObject.clearForm();
+                },
+                error: function(){
+                    alert("error connecting server");
+                }
+            });
         }
     });
     $('#inputSearchName').on('input', function(){
-		$.post("searchstudents.act", {
-    	        stu_name: searchObject.name(),
-    	        stu_class: searchObject.class(),
-    	        stu_status: searchObject.status()
-    	  	},	
-    	  	function(json, status){
+        $.ajax({
+            url: "searchstudents.act", 
+            method : "POST",
+            data : {
+                stu_name: searchObject.name(),
+                stu_class: searchObject.class(),
+                stu_status: searchObject.status()
+            },
+            success: function(json){
                 $("tbody").empty();
                 if(json.length > 0) {
                     $("tbody").append(listResult(json));
                     return;
                 }
                 showErrorSearch();
-    	  	}
-	    );  	
-    // insertstudent.act
-    // updatestudent.act
-    // deletestudent.act
+            },
+            error: function(){
+                alert("error connecting server");
+            }
+        });
 	});
     function listResult(json){
         var str;
         for(var i=0; i<json.length; i++){
             var status = json[i].stu_status == 1 ? 
-                    "<button  class='btn btn-success btn-sm' >" +
-                        "<i class='fa fa-check'></i>&nbsp;&nbsp;Active" +
-                    "</button>"
-                    :
-                    "<button  class='btn btn-warning btn-sm' >" +
-                        "<i class='fa fa-times'></i>&nbsp;&nbsp;Inactive" +
-                    "</button>";
+                "<button  class='btn btn-success btn-sm' >" +
+                    "<i class='fa fa-check'></i>&nbsp;&nbsp;Active" +
+                "</button>"
+                :
+                "<button  class='btn btn-warning btn-sm' >" +
+                    "<i class='fa fa-times'></i>&nbsp;&nbsp;Inactive" +
+                "</button>";
             var gender = json[i].stu_gender == 1 ? "Male" : "Female";
             str += 
                 "<tr>" +
@@ -91,8 +124,25 @@ $(document).ready(function() {
         university: function(){   return $("#inputUniversity").val();   },
         stu_class: function(){   return $("#inputClass").val();   },        
         gender: function(){   return $("#inputGenderMale").is(':checked') == true ? 1 : 0;     },
-        status1: function(){   return $("#inputStatusActive").is(':checked') == true ? 1 : 0;    }
-        //toString: function(){   }
+        status: function(){   return $("#inputStatusActive").is(':checked') == true ? 1 : 0;    },
+        clearForm: function(){
+            $("#inputName").val(""); 
+            $("#inputClass").val("");
+            $("#inputUniversity").val("");
+        }
     }
-    //alert(studentObject.id() + "\n" + studentObject.name() + "\n" + studentObject.university() + "\n" + studentObject.stu_class() + "\n" + studentObject.gender() + "\n" + studentObject.status1() + "\n" ); 
+    function setLastId(){
+        if($("#inputId").val() == ""){
+            $.post("getlastid.act", 
+                function(data,s){
+                    setIncreaseId(data);
+                }
+            );
+        }
+    } 
+    function setIncreaseId(data){
+        var id = parseInt(data.substring(4, data.length)) + 1;
+        $("#inputId").val("131N" + id);   
+    }    
+    setLastId();   
 });

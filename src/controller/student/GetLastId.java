@@ -1,5 +1,7 @@
 package controller.student;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,21 +13,13 @@ import com.google.gson.Gson;
 import controller.Action;
 import controller.ActionForward;
 
-public class InsertStudent implements Action {
+public class GetLastId implements Action {
 
 	@Override
 	public ActionForward execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
-
-		Student stu = new Student();
-		stu.setStu_name(request.getParameter("stu_name"));
-		stu.setStu_class(request.getParameter("stu_class"));
-		stu.setStu_id(request.getParameter("stu_id"));
-		stu.setStu_gender(Integer.parseInt(request.getParameter("stu_gender")));
-		stu.setStu_status(Integer.parseInt(request.getParameter("stu_status")));
-		stu.setStu_university(request.getParameter("stu_university"));
-
-		String gson = new Gson().toJson(StudentDAO.insert(stu));
+				
+		String gson = new Gson().toJson(StudentDAO.getLastID());
 		response.setContentType("application/json");
 		response.setCharacterEncoding("UTF-8");				
 		response.getWriter().write(gson);

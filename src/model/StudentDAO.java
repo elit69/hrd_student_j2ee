@@ -18,7 +18,7 @@ public class StudentDAO {
 	//any class + any status	=>	stu_class LIKE %"className"%	AND stu_status = 0/1
 	public static ArrayList<Student> search(String name, String stu_class, int status) 
 			throws ClassNotFoundException, SQLException{
-		ResultSet rs=null;
+		ResultSet rs = null;
 		Connection con = DBConnection.getConnection();
 		String 	selectSQL = 
 				status == -1 ? 
@@ -58,7 +58,7 @@ public class StudentDAO {
 	      if(con!=null)try{con.close();}catch(SQLException e){throw e;}
 	    }
 	}
-	public static void insert(Student stu) throws ClassNotFoundException, SQLException{
+	public static boolean insert(Student stu) throws ClassNotFoundException, SQLException{
 		Connection con = DBConnection.getConnection();
 		PreparedStatement ps =  con.prepareStatement("INSERT INTO hrd_students VALUES(?,?,?,?,?,?)");
 		ps.setString(1, stu.getStu_id());
@@ -68,12 +68,15 @@ public class StudentDAO {
 		ps.setString(5, stu.getStu_class());
 		ps.setInt(6, stu.getStu_status());
 	    try{	    	
-			ps.executeUpdate();		
+			if(ps.executeUpdate()>0) return true;		
 			System.out.println(ps.toString());
+	    }catch(Exception e){
+	    	return false;
 	    }finally{
 	      if(ps!=null)try{ps.close();}catch(SQLException e){throw e;}
 	      if(con!=null)try{con.close();}catch(SQLException e){throw e;}
 	    }
+	    return false;
 	}
 	public static void delete(String id) throws ClassNotFoundException, SQLException{
 		Connection con = DBConnection.getConnection();
@@ -113,6 +116,21 @@ public class StudentDAO {
 	      if(con!=null)try{con.close();}catch(SQLException e){throw e;}
 	    }
 	}
+	public static String getLastID() throws ClassNotFoundException, SQLException{
+		ResultSet rs = null;
+		Connection con = DBConnection.getConnection();
+		PreparedStatement ps =  con.prepareStatement("SELECT * FROM hrd_students ORDER BY stu_id DESC LIMIT 1");
+	    try{	    	
+	    	rs = ps.executeQuery();
+	    	System.out.println(ps.toString());
+	    	rs.next();
+	    	return rs.getString(1);			
+	    }finally{
+	      if(rs!=null)try{rs.close();}catch(SQLException e){throw e;}
+	      if(ps!=null)try{ps.close();}catch(SQLException e){throw e;}
+	      if(con!=null)try{con.close();}catch(SQLException e){throw e;}
+	    }		
+	}
 //	public static void main(String[] args) throws ClassNotFoundException, SQLException {
 //		Student s = new Student();
 //		s.setStu_id("asdf");
@@ -124,5 +142,6 @@ public class StudentDAO {
 //		update(s);
 //		insert(s);
 //		delete("asd");
+//		System.out.println(getLastID());
 //	}
 }

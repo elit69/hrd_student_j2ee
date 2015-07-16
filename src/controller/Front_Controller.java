@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import controller.student.DeleteStudent;
+import controller.student.GetLastId;
 import controller.student.InsertStudent;
 import controller.student.SearchStudents;
 import controller.student.UpdateStudent;
@@ -73,6 +74,14 @@ public class Front_Controller extends HttpServlet {
 				break;
 			case "/deletestudent.act":
 				action = new DeleteStudent(); 
+				try {
+					forward = action.execute(request, response);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				break;
+			case "/getlastid.act":
+				action = new GetLastId(); 
 				try {
 					forward = action.execute(request, response);
 				} catch (Exception e) {
