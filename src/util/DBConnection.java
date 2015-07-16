@@ -7,7 +7,7 @@ public class DBConnection {
 	private static String PORT_NUMBER = "3306";
 	private static String DB_NAME = "hrd_students";
 	private static String USER_NAME = "root";
-	private static String PASSWORD = "";
+	private static String PASSWORD = "1234";
 
 	/**
 	 * Deny object initialization
