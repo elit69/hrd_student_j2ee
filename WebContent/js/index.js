@@ -11,14 +11,18 @@ $(document).ready(function() {
         $("#showSuccessAdd").hide(400);
         $("#showErrorAdd").hide(400);
     });
+    $('#deleteStudent').click(function(){
+        alert('a');
+
+    });    
     $('#btnAdd').click(function(){
         if( studentObject.id() ==  "" || 
             studentObject.name() ==  "" ||
             studentObject.university() ==  "" ||
             studentObject.stu_class() ==  ""){
-            $("#showErrorAdd").show(400);
-            $("#showSuccessAdd").hide(400);
-            return;
+                $("#showErrorAdd").show(400);
+                $("#showSuccessAdd").hide(400);
+                return;
         } else{
             $.ajax({
                 url: "insertstudent.act", 
@@ -65,6 +69,7 @@ $(document).ready(function() {
             }
         });
 	});
+
     function listResult(json){
         var str;
         for(var i=0; i<json.length; i++){
@@ -87,7 +92,7 @@ $(document).ready(function() {
                   "<td>" + status + "</td>" + 
                   "<td>" + 
                     "<button  class='btn btn-info btn-sm'><i class='fa fa-pencil'></i>&nbsp;&nbsp;Edit</button> " +
-                    "<button  class='btn btn-danger btn-sm'><i class='fa fa-trash'></i>&nbsp;&nbsp;Delete</button> " +
+                    "<button  class='btn btn-danger btn-sm' id='btnDelete' onclick='deleteStudent(this)'><i class='fa fa-trash'></i>&nbsp;&nbsp;Delete</button> " +
                   "</td>" + 
                 "</tr>";
         }      
@@ -146,3 +151,14 @@ $(document).ready(function() {
     }    
     setLastId();   
 });
+
+function deleteStudent(btn){
+     $.ajax({
+        url: "deletestudent.act", 
+        method : "POST",
+        data : {
+            stu_id:     btn.parentNode.parentNode.childNodes[0].textContent
+        }
+    });
+     btn.parentNode.parentNode.remove();
+ }

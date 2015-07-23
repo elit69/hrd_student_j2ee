@@ -19,17 +19,15 @@ public class DeleteStudent implements Action {
 	public ActionForward execute(HttpServletRequest request,
 			HttpServletResponse response) throws Exception {
 		
-//		String stu_name = request.getParameter("stu_name");
-//		String stu_class = request.getParameter("stu_class");
-//		int stu_status = Integer.parseInt(request.getParameter("stu_status"));
-//		ArrayList<Student> listStudent = StudentDAO.search(stu_name, stu_class, stu_status);
-//
-//		String strListStudent = new Gson().toJson(listStudent);
-//		response.setContentType("application/json");
-//		response.setCharacterEncoding("UTF-8");				
-//		response.getWriter().write(strListStudent);
-//	
-//		System.out.println(strListStudent);		
+		String stu_id = request.getParameter("stu_id");
+		StudentDAO.delete(stu_id);
+
+		
+		response.setContentType("application/json");
+		response.setCharacterEncoding("UTF-8");				
+		
+	
+		System.out.println(stu_id);		
 		return null;
 	}
 
