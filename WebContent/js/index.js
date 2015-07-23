@@ -91,7 +91,6 @@ $(document).ready(function() {
                   "<td>" + json[i].stu_class + "</td>" +  
                   "<td>" + status + "</td>" + 
                   "<td>" + 
-                    "<button  class='btn btn-info btn-sm'><i class='fa fa-pencil'></i>&nbsp;&nbsp;Edit</button> " +
                     "<button  class='btn btn-danger btn-sm' id='btnDelete' onclick='deleteStudent(this)'><i class='fa fa-trash'></i>&nbsp;&nbsp;Delete</button> " +
                   "</td>" + 
                 "</tr>";
